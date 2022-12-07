@@ -1,0 +1,11 @@
+POST http://localhost:4000/products
+Content-Type: application/json
+{
+  "name": "camisa",
+  "description" : "camisa negra",
+  "price": "500",
+  "categories": ["Camisa", "Hombres"],
+  "shipping" : true,
+  "available": "true",
+  "images" : "camisa.jpg"
+}
