@@ -1,9 +1,7 @@
-const { Router } = require("express");
+import { Router } from 'express'
+import { inicioRoutes } from '../controllers/controllers.js'
+const mainRouter = Router()
 
-const mainRouter = Router();
+mainRouter.get('/', inicioRoutes)
 
-mainRouter.get("/", function (req, res) {
-  res.send("Hello, world!");
-});
-
-module.exports = mainRouter;
+export default mainRouter

@@ -1,5 +1,6 @@
-const server = require("./src/app");
+import server from './src/app.js'
 
-server.listen(4000, () => {
-  console.log("listening on port 4000");
-});
+const PORT = 4000
+server.listen(PORT, () => {
+  console.log(`listening on port ${PORT}`)
+})
