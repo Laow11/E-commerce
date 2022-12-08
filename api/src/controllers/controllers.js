@@ -1,19 +1,22 @@
-<<<<<<< HEAD
 export const inicioRoutes = (req, res) => {
-  res.send(`Estamos iniciando esto`)
-}
-=======
+  res.send(`Estamos iniciando esto`);
+};
 import axios from "axios";
 import Products from "../models/Products.js";
-const getProducts = async (req, res) => {
+export const getProducts = async (req, res) => {
   try {
-    const response = await axios.get("https://fakestoreapi.com/products");
+    const response = await axios.get("https://fakestoreapi.com/products", {
+      headers: { "Accept-Encoding": "gzip,deflate,compress" },
+    });
     const data = response.data;
-    const dataMap = data.map((products) => {
+    const dataMap = data.map((p) => {
       return {
-        id: products.id,
-        name: products.title,
-        price: products.price,
+        id: p.id,
+        name: p.title,
+        price: p.price,
+        categories: p.category,
+        description: p.description,
+        image: p.image,
       };
     });
 
@@ -23,7 +26,7 @@ const getProducts = async (req, res) => {
   }
 };
 
-const createProduct = async (req, res) => {
+export const createProduct = async (req, res) => {
   const { body } = req;
   const { name, description, price, categories, shipping, available, images } =
     body;
@@ -44,6 +47,3 @@ const createProduct = async (req, res) => {
     console.log(error);
   }
 };
-
-export default { createProduct, getProducts };
->>>>>>> c8bd79ef521e53b4b7dc13c57a2ca58e6fc87022
